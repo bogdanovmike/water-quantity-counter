@@ -30,30 +30,30 @@ public class WaterQuantityCounter {
     private static void printLandscape(int[] landscape) {
         System.out.println("Printing landscape...");
 
-        for (int i = 0; i < landscape.length; i++) {
-            System.out.print(landscape[i] + "\t");
+        for (int aLandscape : landscape) {
+            System.out.print(aLandscape + ", ");
         }
 
         System.out.println();
     }
 
-    public static int countWaterQuantity(int[] landscape) {
+    static int countWaterQuantity(int[] landscape) {
 
-        int[] maxRight = new int[landscape.length];
+        int[] maxFromRight = new int[landscape.length];
 
-        maxRight[landscape.length - 1] = landscape[landscape.length - 1];
+        maxFromRight[landscape.length - 1] = landscape[landscape.length - 1];
         for (int i = landscape.length - 2; i >= 0; i--) {
-            maxRight[i] = Math.max(maxRight[i + 1], landscape[i]);
+            maxFromRight[i] = Math.max(maxFromRight[i + 1], landscape[i]);
         }
 
         int waterQuantity = 0;
 
-        int maxLeft = 0;
+        int maxFromLeft = 0;
         for (int i = 0; i < landscape.length; i++) {
-            if (maxLeft < landscape[i]) {
-                maxLeft = landscape[i];
+            if (maxFromLeft < landscape[i]) {
+                maxFromLeft = landscape[i];
             }
-            int minOfMaxLeftAndMaxRight = Math.min(maxLeft, maxRight[i]);
+            int minOfMaxLeftAndMaxRight = Math.min(maxFromLeft, maxFromRight[i]);
             waterQuantity += (minOfMaxLeftAndMaxRight - landscape[i]);
         }
         return waterQuantity;
