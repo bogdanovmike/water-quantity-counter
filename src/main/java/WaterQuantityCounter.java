@@ -1,7 +1,7 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class WaterQuantityCounter {
-
 
     public static void main(String[] args) {
 
@@ -17,24 +17,17 @@ public class WaterQuantityCounter {
     }
 
     private static int[] generateLandscape(int n) {
-        System.out.println("Building landscape... ");
         int[] landscape = new int[n];
 
         for (int i = 0; i < landscape.length; i++) {
             landscape[i] = (int) (Math.random() * n);
         }
-        System.out.println("completed");
+
         return landscape;
     }
 
     private static void printLandscape(int[] landscape) {
-        System.out.println("Printing landscape...");
-
-        for (int aLandscape : landscape) {
-            System.out.print(aLandscape + ", ");
-        }
-
-        System.out.println();
+        System.out.println(Arrays.toString(landscape));
     }
 
     static int countWaterQuantity(int[] landscape) {
